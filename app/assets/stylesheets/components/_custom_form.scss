@@ -1,0 +1,67 @@
+.custom-form {
+  background: rgba(white,0.7);
+  border: 1.5px solid $primary;
+  border-radius: 20px;
+  margin-top: 30px;
+  h1 {
+    color: $primary;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+  .form-control {
+    border: 1px solid rgba($primary, 0.25);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary;
+    background: #fdfaff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    &::placeholder {
+      color: $secondary;
+      font-weight: 400;
+    }
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.1);
+      background: white;
+      outline: none;
+    }
+    &.is-invalid {
+      border-color: $danger;
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($danger, 0.1);
+      }
+    }
+  }
+  .btn-primary {
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 9px;
+    letter-spacing: 0.2px;
+    transition: opacity 0.15s;
+    &:hover { opacity: 0.88; }
+  }
+  h6 {
+    color: $primary;
+  }
+  .form-footer {
+    a {
+      color: $primary;
+      text-decoration: none;
+      font-weight: 600;
+      transition: border-color 0.15s;
+      &:hover {
+        border-color: $primary;
+      }
+    }
+  }
+  .eye-icon {
+    color: $secondary;
+    cursor: pointer;
+    transition: color 0.15s;
+    &:hover { color: $primary; }
+  }
+}

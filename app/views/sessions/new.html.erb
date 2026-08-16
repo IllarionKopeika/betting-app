@@ -1,0 +1,29 @@
+<div class="row justify-content-center">
+  <div class="col">
+    <div class="custom-form p-3">
+
+      <h1 class="text-center mb-3">Логин</h1>
+
+      <%= form_with url: session_path do |f| %>
+        <div class="mb-3">
+          <%= f.email_field :email, placeholder: "Имейл", value: params[:email], class: "form-control" %>
+        </div>
+
+        <div class="position-relative mb-3" data-controller="password-visibility">
+          <%= f.password_field :password, placeholder: "Пароль", class: "form-control pe-5", data: { password_visibility_target: "input" } %>
+          <button type="button" class="btn btn-link position-absolute end-0 top-50 translate-middle-y text-muted" data-action="password-visibility#toggle" tabindex="-1">
+            <i data-password-visibility-target="icon" class="eye-icon fa-solid fa-eye"></i>
+          </button>
+        </div>
+
+        <%= f.submit "Погнали!", class: "btn btn-primary w-100 mb-3" %>
+      <% end %>
+
+      <div class="form-footer d-flex justify-content-center align-items-center">
+        <p class="mb-0 me-2">Нэту акка?</p>
+        <strong><%= link_to "Зарегаться", sign_up_path %></strong>
+      </div>
+
+    </div>
+  </div>
+</div>

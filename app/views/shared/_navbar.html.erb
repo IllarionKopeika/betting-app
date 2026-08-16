@@ -1,0 +1,21 @@
+<nav class="navbar bg-body-tertiary sticky-top custom-navbar">
+  <% if authenticated? %>
+    <div class="container d-flex justify-content-around">
+      <div class="d-flex justify-content-start align-items-center">
+        <div>
+          <%= image_tag("logo.png", alt: "logo", width: 25, height: 25, class: "d-inline-block align-text-top me-1") %>
+        </div>
+        <div>
+          Ку, <%= Current.user.name %>!
+        </div>
+      </div>
+      <div>
+        <%= link_to "Логаут", logout_path, data: { turbo_method: :delete } %>
+      </div>
+    </div>
+  <% else %>
+    <div class="container d-flex justify-content-center">
+      <div>Не сри в перерыве матчей!</div>
+    </div>
+  <% end %>
+</nav>

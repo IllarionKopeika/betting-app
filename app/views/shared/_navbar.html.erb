@@ -3,19 +3,33 @@
     <div class="container d-flex justify-content-around">
       <div class="d-flex justify-content-start align-items-center">
         <div>
-          <%= image_tag("logo.png", alt: "logo", width: 25, height: 25, class: "d-inline-block align-text-top me-1") %>
+          <a href="<%= root_path %>">
+            <%= image_tag("logo.png", alt: "logo", width: 25, height: 25, class: "d-inline-block align-text-top me-1") %>
+          </a>
         </div>
-        <div>
+        <div class="nav-text">
           Ку, <%= Current.user.name %>!
         </div>
       </div>
-      <div>
-        <%= link_to "Логаут", logout_path, data: { turbo_method: :delete } %>
+      <div class="dropdown">
+        <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+          Меню
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#" class="dropdown-item nav-link text-center p-0">Мои ставки</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><%= link_to "Логаут", logout_path, data: { turbo_method: :delete }, class: "dropdown-item nav-link text-center p-0" %></li>
+        </ul>
       </div>
     </div>
   <% else %>
-    <div class="container d-flex justify-content-center">
-      <div>Не сри в перерыве матчей!</div>
+    <div class="container d-flex justify-content-center align-items-center">
+      <div>
+        <%= image_tag("logo.png", alt: "logo", width: 25, height: 25, class: "d-inline-block align-text-top me-1") %>
+      </div>
+      <div class="nav-text">
+        Не сри в перерыве матчей!
+      </div>
     </div>
   <% end %>
 </nav>

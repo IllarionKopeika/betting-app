@@ -1,8 +1,37 @@
 .custom-navbar {
   background: rgba(white,0.7) !important;
   border-bottom: 1.5px solid $primary;
+  .nav-text {
+    font-size: 18px;
+    color: $primary;
+    font-weight: 700;
+  }
   a {
+    font-size: 18px;
+    color: $primary;
+    font-weight: 700;
     text-decoration: none;
+    &:after {
+      content: none;
+    }
+  }
+  .dropdown {
+    position: relative;
+  }
+  .dropdown-menu {
+    background: whitesmoke;
+    border: 1.5px solid $primary;
+    border-radius: 5px;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+  .nav-link {
     font-size: 16px;
+    color: $primary;
+    font-weight: 500;
+  }
+  .dropdown-divider {
+    opacity: 50%;
   }
 }

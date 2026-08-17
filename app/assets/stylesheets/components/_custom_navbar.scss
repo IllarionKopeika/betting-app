@@ -1,12 +1,12 @@
 .custom-navbar {
   background: rgba(white,0.7) !important;
-  border-bottom: 1.5px solid $primary;
+  border-bottom: 1px solid $primary;
   .nav-text {
     font-size: 18px;
     color: $primary;
     font-weight: 700;
   }
-  a {
+  a, i {
     font-size: 18px;
     color: $primary;
     font-weight: 700;
@@ -20,7 +20,7 @@
   }
   .dropdown-menu {
     background: whitesmoke;
-    border: 1.5px solid $primary;
+    border: 1px solid $primary;
     border-radius: 5px;
     left: 50% !important;
     right: auto !important;

@@ -14,9 +14,14 @@
       <div class="dropdown">
         <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
           Меню
+          <i class="fa-solid fa-bars"></i>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="#" class="dropdown-item nav-link text-center p-0">Мои ставки</a></li>
+          <% if Current.user.admin? %>
+            <li><%= link_to "Новый бет", new_bet_path, class: "dropdown-item nav-link text-center p-0" %></li>
+            <li><hr class="dropdown-divider"></li>
+          <% end %>
+          <li><%= link_to "Беты", bets_path, class: "dropdown-item nav-link text-center p-0" %></li>
           <li><hr class="dropdown-divider"></li>
           <li><%= link_to "Логаут", logout_path, data: { turbo_method: :delete }, class: "dropdown-item nav-link text-center p-0" %></li>
         </ul>

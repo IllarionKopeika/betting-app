@@ -1,9 +1,33 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "httparty"
+require "json"
+
+puts "Create teams"
+
+def headers
+  {
+    "x-rapidapi-key" => "22f928be6fmsh961dfaf77a085e7p1b48d2jsna83e0330f30a",
+    "x-rapidapi-host" => "english-premiere-league1.p.rapidapi.com",
+    "Content-Type" => "application/json"
+  }
+end
+
+def querystring
+  {
+    "limit": "20"
+  }
+end
+
+url = "https://english-premiere-league1.p.rapidapi.com/team/list"
+response = HTTParty.get(url, headers: headers, params: querystring)
+
+if response.success?
+  response_data = JSON.parse(response.body, symbolize_names: true)
+  response_data.each do |team|
+    name = team[:shortDisplayName]
+    logo = team[:logos][0]
+    puts "#{name} - #{logo}"
+    Team.create!(en_name: name, logo: logo)
+  end
+end
+
+puts "Done"

@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  prediction_deadline: 2026-08-17 16:23:39
+
+two:
+  name: MyString
+  prediction_deadline: 2026-08-17 16:23:39

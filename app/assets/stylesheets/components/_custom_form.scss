@@ -1,13 +1,10 @@
 .custom-form {
   background: rgba(white,0.7);
-  border: 1.5px solid $primary;
+  border: 1px solid $primary;
   border-radius: 20px;
   margin-top: 30px;
   h1 {
     color: $primary;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
   }
   .form-control {
     border: 1px solid rgba($primary, 0.25);
@@ -63,5 +60,29 @@
     cursor: pointer;
     transition: color 0.15s;
     &:hover { color: $primary; }
+  }
+  .team-select-grid {
+    .team-check-card {
+      border: 2px solid $primary;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      width: 100%;
+      margin: 0;
+
+      &:has(.form-check-input:checked) {
+        border-color: $secondary;
+        background: rgba($secondary, 0.5);
+      }
+    }
+    .team-logo {
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+    }
+    span {
+      font-size: 12px;
+      font-weight: 500;
+    }
   }
 }

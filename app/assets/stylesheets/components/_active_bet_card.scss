@@ -1,0 +1,15 @@
+.active-bet-card {
+  background: rgba(white,0.7);
+  border: 1px solid $primary;
+  border-radius: 10px;
+  h6 {
+    font-size: 16px;
+    font-weight: 700;
+    color: $primary;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary;
+  }
+}

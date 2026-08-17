@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def new
     if authenticated?
-      flash[:info] = "Нинада логиниться дважды!"
+      flash[:warning] = "Нинада логиниться дважды!"
       redirect_to root_path
     end
   end
@@ -17,13 +17,13 @@ class SessionsController < ApplicationController
       start_new_session_for user
       redirect_to after_authentication_url
     else
-      flash[:danger] = "Логин не ок"
+      flash[:danger] = "Намудрил с имейлом/паролем!"
       redirect_to login_path
     end
   end
 
   def destroy
-    flash[:info] = "Логаут ок"
+    flash[:info] = "Пока-пока"
     terminate_session
     redirect_to root_path
   end

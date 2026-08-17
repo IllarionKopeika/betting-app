@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+  <div class="col">
+    <div class="custom-index p-3">
+      <h1 class="text-center my-3">Беты</h1>
+
+      <ul class="nav nav-tabs d-flex justify-content-evenly mb-3" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="ongoing-tab"
+                  data-bs-toggle="tab" data-bs-target="#ongoing-tab-pane"
+                  type="button" role="tab"
+                  aria-controls="ongoing-tab-pane" aria-selected="true">
+            Активные
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="completed-tab"
+                  data-bs-toggle="tab" data-bs-target="#completed-tab-pane"
+                  type="button" role="tab"
+                  aria-controls="completed-tab-pane" aria-selected="false">
+            Прошедшие
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="ongoing-tab-pane"
+             role="tabpanel" aria-labelledby="ongoing-tab" tabindex="0">
+          <% if @active_competitions.empty? %>
+            <h4 class="text-center">Пусто</h4>
+          <% else %>
+            <% @active_competitions.each do |active_bet| %>
+              <%= render "active_bets", active_bet: active_bet %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="tab-pane fade" id="completed-tab-pane"
+             role="tabpanel" aria-labelledby="completed-tab" tabindex="0">
+          <% if @completed_competitions.empty? %>
+            <h4 class="text-center">Пусто</h4>
+          <% else %>
+            <% @completed_competitions.each do |completed_bet| %>
+              <%= render "completed_bets", completed_bet: completed_bet %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

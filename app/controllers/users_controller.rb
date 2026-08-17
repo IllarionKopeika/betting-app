@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def new
     if authenticated?
-      flash[:info] = "Нинада плодить аккаунты!"
+      flash[:warning] = "Нинада плодить аккаунты!"
       redirect_to root_path
     else
       @user = User.new

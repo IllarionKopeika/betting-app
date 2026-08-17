@@ -10,9 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_08_17_053504) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_17_132112) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "competition_teams", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "competition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_competition_teams_on_competition_id"
+    t.index ["team_id", "competition_id"], name: "index_competition_teams_on_team_id_and_competition_id", unique: true
+    t.index ["team_id"], name: "index_competition_teams_on_team_id"
+  end
+
+  create_table "competitions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "prediction_deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status"
+  end
+
+  create_table "predictions", force: :cascade do |t|
+    t.integer "prediction_type"
+    t.integer "predicted_position"
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.bigint "competition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_predictions_on_competition_id"
+    t.index ["team_id"], name: "index_predictions_on_team_id"
+    t.index ["user_id", "team_id", "competition_id"], name: "index_predictions_on_user_id_and_team_id_and_competition_id", unique: true
+    t.index ["user_id"], name: "index_predictions_on_user_id"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "ip_address"
@@ -21,6 +53,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_17_053504) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "en_name"
+    t.string "ru_name"
+    t.string "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,5 +73,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_17_053504) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "competition_teams", "competitions"
+  add_foreign_key "competition_teams", "teams"
+  add_foreign_key "predictions", "competitions"
+  add_foreign_key "predictions", "teams"
+  add_foreign_key "predictions", "users"
   add_foreign_key "sessions", "users"
 end

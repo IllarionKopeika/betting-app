@@ -1,0 +1,15 @@
+<div class="active-bet-card mb-2 p-3">
+  <h6 class="text-center mb-2"><%= active_bet.name %></h6>
+  <p class="text-center mb-2"><strong>Дедлайн:</strong> <%= format_datetime(active_bet.prediction_deadline) %></p>
+  <div class="d-flex justify-content-center">
+    <% if active_bet.status == "ongoing" %>
+      <%= link_to "#", class: "btn btn-secondary w-75 text-white" do %>
+        Сделать ставку! <i class="fa-solid fa-money-check-dollar"></i>
+      <% end %>
+    <% else %>
+      <%= link_to "#", class: "btn btn-outline-danger w-100 text-danger disabled" do %>
+        Дедлайн прошел! <i class="fa-solid fa-lock"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>

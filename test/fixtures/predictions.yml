@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prediction_type: 1
+  predicted_position: 1
+  user: one
+  team: one
+  competition: one
+
+two:
+  prediction_type: 1
+  predicted_position: 1
+  user: two
+  team: two
+  competition: two

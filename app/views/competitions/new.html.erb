@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+  <div class="col">
+    <div class="custom-form p-3">
+
+      <h1 class="text-center mb-3">Новый бет</h1>
+
+      <%= form_with model: @competition do |f| %>
+        <div class="mb-3">
+          <%= f.text_field :name, placeholder: "Наименование", class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.datetime_field :prediction_deadline, placeholder: "Дедлайн", class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <div class="row row-cols-2 g-2 team-select-grid">
+            <% Team.order(:en_name).each do |team| %>
+              <div class="col">
+                <label class="team-check-card d-flex justify-content-center align-items-center p-1">
+                  <%= check_box_tag "competition[team_ids][]", team.id,
+                        @competition.teams.include?(team),
+                        id: "team_#{team.id}", class: "form-check-input me-2 d-none" %>
+                  <%= image_tag team.logo, alt: team.en_name, class: "team-logo me-1" if team.logo.present? %>
+                  <span><%= team.en_name %></span>
+                </label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <%= f.submit "Создать!", class: "btn btn-primary w-100 mb-3" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
